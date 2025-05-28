@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    margin: 1em auto;
+    background: #fff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    max-width: 600px;
+}
+#signature-preview {
+    border: 1px solid #ccc;
+    background: #fafafa;
+    padding: 1em;
+    margin-bottom: 1em;
+    min-height: 100px;
+}
+button#insert-btn {
+    padding: 0.5em 1.5em;
+    font-size: 1em;
+    background: #0079ac;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button#insert-btn:hover {
+    background: #005d7a;
+}
