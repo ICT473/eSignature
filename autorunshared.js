@@ -1,6 +1,7 @@
+// Fetches the template from your GitHub Pages hosting, NOT SharePoint.
 async function getTemplate(templateName) {
-  const url = `https://gidcgd.sharepoint.com/sites/signatures/SiteAssets/${templateName}`;
-  const response = await fetch(url, { credentials: "include" });
+  const url = `https://ict473.github.io/eSignature/${templateName}`;
+  const response = await fetch(url);
   if (!response.ok) throw new Error("Failed to fetch template: " + url);
   return await response.text();
 }
@@ -45,6 +46,10 @@ function checkSignature(event) {
     .catch(() => { event.completed(); });
 }
 
+// Office.actions.associate for autorun events (modern requirement)
 if (typeof Office !== 'undefined' && Office.actions) {
   Office.actions.associate("checkSignature", checkSignature);
 }
+
+// For environments where global window binding is required for autorun
+window.checkSignature = checkSignature;
