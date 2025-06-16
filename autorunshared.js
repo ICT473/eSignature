@@ -4,9 +4,8 @@ Office.onReady(() => {
 
 async function onNewMessageComposeHandler(event) {
   try {
-    const item = Office.context.mailbox.item;
-    // Try to get compose type using Office.js API if available
     let type = "new";
+    const item = Office.context.mailbox.item;
     if (item.getComposeTypeAsync) {
       await new Promise(resolve => {
         item.getComposeTypeAsync(result => {
@@ -21,7 +20,6 @@ async function onNewMessageComposeHandler(event) {
         });
       });
     } else {
-      // Fallback: try to infer from body text
       const body = await getBodyText();
       if (body.includes("From:") || body.includes("Sent:")) {
         type = "forward";
